@@ -1,33 +1,32 @@
 import React, { Component } from 'react';
-import { Router, browserHistory, Route, Link } from 'react-router';
+import { Router, browserHistory, Route } from 'react-router';
 import './App.css';
-const NavBar = () => (
-    <div className="navbar">
-        <Link to="/">Feed</Link>
-        <Link to="/profile">Profile</Link>
-    </div>
-);
-const Template = ({ title }) => (
-    <div>
-        <NavBar />
-        <p className="page-info">
-            This is the {title} page.
-        </p>
-    </div>
-);
-const Feed = (props) => (
-    <Template title="Feed"/>
-);
-const Profile = (props) => (
-    <Template title="Profile"/>
-);
+//components
+import About from './components/pages/About';
+import Header from './components/Header';
+import Homepage from './components/pages/Homepage';
+import Team from './components/pages/Team'
+import Subject from './components/pages/Subject'
+import ContactUs from './components/pages/ContactUs'
+
+import './components/pages/default.css'
+
 class App extends Component {
     render() {
         return (
-            <Router history={browserHistory}>
-                <Route path="/" component={Feed}/>
-                <Route path="/profile" component={Profile}/>
-            </Router>
+           // <Router history ={browserHistory}>
+            <div className="App">
+
+            <Header/>
+
+                <Router history ={browserHistory}>
+                    <Route path='/about' components={About}/>
+                    <Route path='/' components={Homepage}/>
+                    <Route path='/team' components={Team}/>
+                    <Route path='/subject' components={Subject}/>
+                    <Route path='/contactus' components={ContactUs}/>
+                </Router>
+            </div>
         );
     }
 }
